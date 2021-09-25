@@ -12,7 +12,7 @@ function App() {
 
   const search = e => {
     if(e.key === "Enter") {
-      fetch(`${api.base}weather?q=${query}&units=standard&APPID=${api.key}`)
+      fetch(`${api.base}weather?q=${query}&units=imperial&APPID=${api.key}`)
         .then(res => res.json())
         .then(result => {
           setWeather(result);
@@ -22,9 +22,10 @@ function App() {
   }
   }
   return (
-    <div className="App">
+    <div className="app">
       <h1>The Very Beginning of our Weather App!</h1>
       <p>by Kellie and Allegra</p>
+      <div className="main">
       <main>
         <div className="search-box">
           <input
@@ -36,7 +37,14 @@ function App() {
             onKeyPress={search}
             />
         </div>
+        {(typeof weather.main != 'undefined') ? (
+            <div className="result">
+              <div className="city">{weather.name}</div>
+              <div className="temperature">{Math.round(weather.main.temp)}°f </div>
+            </div>
+        ) : ('')}
       </main>
+      </div>
     </div>
   );
 
