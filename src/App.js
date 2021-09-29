@@ -7,16 +7,16 @@ const api = {
 
 function App() {
 
-  const [query, setQuery] = useState('');
+  const [zip, setZip] = useState('');
   const [weather, setWeather] = useState({});
 
   const search = e => {
     if(e.key === "Enter") {
-      fetch(`${api.base}weather?q=${query}&units=imperial&APPID=${api.key}`)
+      fetch(`${api.base}forecast?zip=${zip}&units=imperial&appid=${api.key}`)
         .then(res => res.json())
         .then(result => {
           setWeather(result);
-          setQuery('');
+          setZip('');
           console.log(result);
     });
   }
@@ -32,17 +32,22 @@ function App() {
             type="text"
             className="search-bar"
             placeholder="Search..."
-            onChange={e => setQuery(e.target.value)}
-            value={query}
+            onChange={e => setZip(e.target.value)}
+            value={zip}
             onKeyPress={search}
             />
         </div>
-        {(typeof weather.main != 'undefined') ? (
+        {(typeof weather.city != 'undefined') ? (
             <div className="result">
-              <div className="city">{weather.name}</div>
-              <div className="temperature">{Math.round(weather.main.temp)}°f </div>
+              <h2>RESULTS</h2>
+              <div className="city">City: {weather.city.name}</div>
+              <div className="temp">Temperature: {Math.round(weather.list[0].main.temp)}</div>
+              <div className="feels-like-temp">Feels Like: {Math.round(weather.list[0].main.feels_like)}</div>
+              <div className="humidity">Humidity: {weather.list[0].main.humidity}.</div>
+              <div className="weather-type">Weather: {weather.list[1].weather[0].main}</div>
+              
             </div>
-        ) : ('')}
+        ) : ('')} 
       </main>
       </div>
     </div>
