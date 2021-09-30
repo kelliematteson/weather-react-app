@@ -1,14 +1,5 @@
-const React = require('react');
-
-export default function Daily(props){
-    return(
-        <h1>Current Forecast in {props.weather.name}</h1>
-        // <h1>{props.weather.main.temp}</h1>
-        // <img>{props.weather.weather.icon}</img>
-    )
-}
-
 import React, { useState } from 'react';
+
 
 const api = {
   key: "670cb036800724c6a8fa3cec23b99a2b",

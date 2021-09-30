@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Daily from './components/Daily';
+import Daily from './Components/Daily';
 
 
 function App() {
