@@ -7,16 +7,16 @@ const api = {
 
 export default function Daily() {
 
-  const [zip, setZip] = useState('');
+  const [city, setCity] = useState('');
   const [weather, setWeather] = useState({});
 
   const search = e => {
     if(e.key === "Enter") {
-      fetch(`${api.base}forecast?zip=${zip}&units=imperial&appid=${api.key}`)
+      fetch(`${api.base}forecast?q=${city}&units=imperial&appid=${api.key}`)
         .then(res => res.json())
         .then(result => {
           setWeather(result);
-          setZip('');
+          setCity('');
           console.log(result);
     });
   }
@@ -30,8 +30,8 @@ export default function Daily() {
             type="text"
             className="search-bar"
             placeholder="Search..."
-            onChange={e => setZip(e.target.value)}
-            value={zip}
+            onChange={e => setCity(e.target.value)}
+            value={city}
             onKeyPress={search}
             />
         </div>
