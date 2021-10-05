@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-import Daily from './Components/Daily';
+import Daily from './components/Daily';
 
 
 
