@@ -10,7 +10,7 @@ function App() {
     <div className="app">
       <h1>Forecast App</h1>
       <Daily />
-  
+      <h1>Testing!</h1>
     </div>
   );
 
