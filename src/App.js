@@ -1,6 +1,8 @@
 
 import React from 'react';
-import Daily from './Components/Daily';
+
+import Daily from './components/Daily';
+
 
 
 function App() {
@@ -10,7 +12,11 @@ function App() {
     <div className="app">
       <h1>Forecast App</h1>
       <Daily />
+
       <h1>Testing!</h1>
+
+  
+
     </div>
   );
 
