@@ -4,7 +4,6 @@ const api = {
   key: "670cb036800724c6a8fa3cec23b99a2b",
   base: "https://api.openweathermap.org/data/2.5/"
 }
-
 export default function Daily() {
 
   const [city, setCity] = useState('');
@@ -17,10 +16,80 @@ export default function Daily() {
         .then(result => {
           setWeather(result);
           setCity('');
+          getWeatherData(result);
+          getWeatherDataDay2(result);
+          getWeatherDataDay3(result);
+          getWeatherDataDay4(result);
+          getWeatherDataDay5(result);
           console.log(result);
     });
   }
   }
+  function getWeatherData(result) {
+      let {temp, humidity} = result.list[0].main;
+      let { description, icon } = result.list[0].weather[0];
+
+      currentWeatherItems.innerHTML = 
+      `
+      <div>Temp: ${temp}</div>
+      <div>Weather: ${description}</div>
+      <div>Humidity: ${humidity}</div>
+      <div><img src="http://openweathermap.org/img/w/${icon}.png" /></div>
+      `
+  }
+  function getWeatherDataDay2(result) {
+    let {temp, humidity} = result.list[5].main;
+    let { description, icon } = result.list[5].weather[0];
+
+    currentWeatherItems2.innerHTML = 
+    `
+    <div>Temp: ${temp}</div>
+    <div>Weather: ${description}</div>
+    <div>Humidity: ${humidity}</div>
+    <div><img src="http://openweathermap.org/img/w/${icon}.png" /></div>
+    `
+}
+function getWeatherDataDay3(result) {
+  let {temp, humidity} = result.list[13].main;
+  let { description, icon } = result.list[13].weather[0];
+
+  currentWeatherItems3.innerHTML = 
+  `
+  <div>Temp: ${temp}</div>
+  <div>Weather: ${description}</div>
+  <div>Humidity: ${humidity}</div>
+  <div><img src="http://openweathermap.org/img/w/${icon}.png" /></div>
+  `
+}
+function getWeatherDataDay4(result) {
+  let {temp, humidity} = result.list[21].main;
+  let { description, icon } = result.list[21].weather[0];
+
+  currentWeatherItems4.innerHTML = 
+  `
+  <div>Temp: ${temp}</div>
+  <div>Weather: ${description}</div>
+  <div>Humidity: ${humidity}</div>
+  <div><img src="http://openweathermap.org/img/w/${icon}.png" /></div>
+  `
+}
+function getWeatherDataDay5(result) {
+  let {temp, humidity} = result.list[29].main;
+  let { description, icon } = result.list[29].weather[0];
+
+  currentWeatherItems5.innerHTML = 
+  `
+  <div>Temp: ${temp}</div>
+  <div>Weather: ${description}</div>
+  <div>Humidity: ${humidity}</div>
+  <div><img src="http://openweathermap.org/img/w/${icon}.png" /></div>
+  `
+}
+  const currentWeatherItems = document.getElementById(`current-weather-items`);
+  const currentWeatherItems2 = document.getElementById(`current-weather-items-2`);
+  const currentWeatherItems3 = document.getElementById(`current-weather-items-3`);
+  const currentWeatherItems4 = document.getElementById(`current-weather-items-4`);
+  const currentWeatherItems5 = document.getElementById(`current-weather-items-5`);
   return (
     <div className="daily-forecast">
       <div className="main">
@@ -47,8 +116,12 @@ export default function Daily() {
             </div>
         ) : ('')} 
       </main>
+      <div id="current-weather-items"></div>
+      <div id="current-weather-items-2"></div>
+      <div id="current-weather-items-3"></div>
+      <div id="current-weather-items-4"></div>
+      <div id="current-weather-items-5"></div>
       </div>
     </div>
   );
-
 }
