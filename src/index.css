@@ -19,6 +19,18 @@ code {
   justify-content: space-between;
 }
 
+.daily-forecast {
+  border: 2px solid black;
+  display: flex;
+}
 .main {
-  background-color: aquamarine;
+  background-color: yellow;
+  flex-direction: column;
+}
+.result {
+  background-color: white;
+  
+}
+.forecast {
+  flex-direction: row;
 }
